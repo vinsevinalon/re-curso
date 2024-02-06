@@ -15,11 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // The suppressHydrationWarning is a 
-    // special prop in React that you can use on an element to 
-    // intentionally ignore the warning about mismatches
-    // between server-rendered and client-rendered content during hydration.
     <html suppressHydrationWarning lang="en">
+      <head>
+        <title>{String(metadata.title)}</title>
+        <meta name="description" content={metadata.description ?? ""} />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
@@ -28,7 +28,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-        </ThemeProvider></body>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
